@@ -101,6 +101,7 @@ function load() {
     //Client :
     const clientProduit = document.createElement('select');
     clientProduit.name = "prod_client"; //Added "name" attr to be accessible from addproduct.php
+    clientProduit.id = "prod_client"; //Added "id" attr to be accessible from listclients.php
     const labelclient = document.createElement('label');
     const clientproduitdiv = document.createElement('div');
     clientproduitdiv.appendChild(labelclient);
@@ -114,7 +115,7 @@ function load() {
     addEventListener('click', (e) => {
         const target = e.target;
         if ( target === Menuproduit) { 
-            var length = clientProduit.options.length;
+/*             var length = clientProduit.options.length;
             for (i = length-1; i >= 0; i--) {
                 clientProduit.options[i] = null;
             } 
@@ -122,7 +123,8 @@ function load() {
                 const opt = document.createElement('option');
                 opt.innerText = NomClien[newcomp];
                 clientProduit.appendChild(opt);
-            }    
+            }  */ 
+            loadclients();  
         }
     })
         
@@ -395,4 +397,22 @@ addEventListener('click', (e) => {
         verify();   
     }
 })
+
+
+function loadclients()
+{
+	
+  $.ajax({
+  type: 'post',
+  url: 'listclients.php',
+  data: {},
+  success: function (response) {
+   // We get the element having id of display_info and put the response inside it
+   $( '#prod_client' ).html(response);
+  }
+  });
+ 
+
+}
+
 load();
