@@ -386,6 +386,8 @@ addEventListener('click', (e) => {
     if (target === Mmenu) {
         current = 1;
         verify();
+        loadproducts()
+
     } else if (target === Menuclient) { 
         current = 2;
         verify();
@@ -415,4 +417,22 @@ function loadclients()
 
 }
 
+function loadproducts()
+{
+	
+  $.ajax({
+  type: 'post',
+  url: 'listproducts.php',
+  data: {},
+  success: function (response) {
+   // We get the element having id of display_info and put the response inside it
+   $( '#info-client' ).html(response);
+ //  $('#datatable').DataTable();
+  }
+  });
+ 
+
+}
+
 load();
+loadproducts();  
