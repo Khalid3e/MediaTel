@@ -14,12 +14,12 @@ const Menuproduit = document.querySelector(".Third-Menu");
 const Edition = document.querySelector(".Fourth-Menu");
 
 //Client datat :
-const codeClient = [], NomClien = [], TelClient = [], DateEnreg = [];
-let comp = 1, produitClient = "";
+//const codeClient = [], NomClien = [], TelClient = [], DateEnreg = [];
+//let comp = 1, produitClient = "";
 
 //Prod data :
-const codeProduit = [], NomP = [], Typeprod = [], TypeTask = [], DateP = [], x = [];
-let Ncomp = 1;
+//const codeProduit = [], NomP = [], Typeprod = [], TypeTask = [], DateP = [], x = [];
+//let Ncomp = 1;
 
 
 //Functions :
@@ -71,32 +71,42 @@ function load() {
     ProdDiv.classList = "ProdDiv";
 
     //nom :
+    const NomProdLabel = document.createElement('label');
     const NomProd = document.createElement('input');
     NomProd.placeholder = "Nom de produit";
+    NomProdLabel.innerText = "Nom de produit";
     NomProd.name = "prod_name";
     NomProd.type = "text"; //Added "name" attr to be accessible from addproduct.php
     const NomProdDiv = document.createElement("div");
+    NomProdDiv.appendChild(NomProdLabel);
     NomProdDiv.appendChild(NomProd);
     ProdDiv.appendChild(NomProdDiv);
 
     //Type de produit :
     const Type = ["PC Portable", "PC Bureau", "Imprimant", "Camera"];
-    const listDrop = document.createElement('select');
+    const listDrop = document.createElement('input');
+    const datalistType = document.createElement('datalist');
+
     const TypeText =document.createElement("label");
     const TypeProdDiv = document.createElement("div");
 
     TypeText.innerText = "Choisir le Type de Produit : ";
     listDrop.name = "prod_type"; //Added "name" attr to be accessible from addproduct.php
+    datalistType.id = "datalistType";
+    listDrop.setAttribute('list','datalistType');
 
-    TypeProdDiv.appendChild(TypeText);
-    TypeProdDiv.appendChild(listDrop);
-    ProdDiv.appendChild(TypeProdDiv);
+    
     for (let i = 0; i < Type.length ; i++) {
         const option = document.createElement("option");
         option.innerText = Type[i];
         option.value = Type[i]; //Added value attr to get it from addproduct.php
-        listDrop.appendChild(option);
+        datalistType.appendChild(option);
     }
+
+    TypeProdDiv.appendChild(TypeText);
+    TypeProdDiv.appendChild(listDrop);
+    ProdDiv.appendChild(TypeProdDiv);    
+    ProdDiv.appendChild(datalistType);
 
     //Client :
     const clientProduit = document.createElement('select');
@@ -107,7 +117,7 @@ function load() {
     clientproduitdiv.appendChild(labelclient);
     clientproduitdiv.appendChild(clientProduit);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 
-    labelclient.innerText = "Choisi le client : ";
+    labelclient.innerText = "Choisir le client : ";
 
     clientproduitdiv.appendChild(clientProduit);
     ProdDiv.appendChild(clientproduitdiv);
@@ -130,36 +140,45 @@ function load() {
         
     //Type de Traitement :
     const Type1 = ["Diagnostique", "Formatage", "Change", "test4", "test5"];
-    const TypeTrait = document.createElement("select");
+    const TypeTrait = document.createElement("input");
     TypeTrait.name = "prod_trait"; //Added "name" attr to be accessible from addproduct.php
     const TypeText1 =document.createElement("label");
     const TraitProdDiv = document.createElement("div");
-
+    const datalistTrait = document.createElement("datalist");
     TraitProdDiv.classList = "traitdiv";
 
     TypeText1.innerText = "Choisir le Type de Traitement : ";
+    datalistTrait.id = "datalistTrait";
+    TypeTrait.setAttribute('list', 'datalistTrait');
 
-
-    TraitProdDiv.appendChild(TypeText1);
-    TraitProdDiv.appendChild(TypeTrait);
-    ProdDiv.appendChild(TraitProdDiv)
     for (let x = 0; x < Type1.length; x++) {
         const option1 = document.createElement("option");
         option1.innerText = Type1[x];
         option1.value = Type1[x]; //Added value attr to get it from addproduct.php
 
-        TypeTrait.appendChild(option1);
+        datalistTrait.appendChild(option1);
     }
 
+    TraitProdDiv.appendChild(TypeText1);
+    TraitProdDiv.appendChild(TypeTrait);
+    ProdDiv.appendChild(datalistTrait);
+    ProdDiv.appendChild(TraitProdDiv)
+
     //Date :
+    const DateProdDiv = document.createElement("div");
     const DateProd = document.createElement("input");
+    const DateLabel = document.createElement("label");
     DateProd.name = "prod_date";
     DateProd.type = "date";
-    DateProd.placeholder = "Date d'enregitrement";
-    ProdDiv.appendChild(DateProd);
+    DateLabel.innerText = "Date d'enregitrement";
+    DateProdDiv.classList = "datediv";
+    DateProdDiv.appendChild(DateLabel);
+    DateProdDiv.appendChild(DateProd);
+    ProdDiv.appendChild(DateProdDiv);
+
 
     //button :
-    ProdBtn.innerText = "submit";
+    ProdBtn.innerText = "Submit";
     ProdBtn.type = "submit";
     ProdBtn.name = "submit_prod";
     ProdBtn.classList = "lool";
@@ -172,13 +191,13 @@ function load() {
             //To stop submit from refreshing the page
             e.preventDefault();
 
-            codeClient[comp] = comp;
-            NomClien[comp] = Nom.value;
-            TelClient[comp] = Tel.value;
-            DateEnreg[comp] = Date.value;
-            console.log("Nom : " + NomClien[comp]);
-            console.log("Tel : " + TelClient[comp]);
-            console.log("Date : " + DateEnreg[comp]);
+            //codeClient[comp] = comp;
+            //NomClien[comp] = Nom.value;
+            //TelClient[comp] = Tel.value;
+            //DateEnreg[comp] = Date.value;
+            //console.log("Nom : " + NomClien[comp]);
+            //console.log("Tel : " + TelClient[comp]);
+            //console.log("Date : " + DateEnreg[comp]);
 
             //Ajax: to add client info to database
             $.ajax({
@@ -200,17 +219,17 @@ function load() {
 
         }
         if (target === ProdBtn) {
-            codeProduit[comp] = Ncomp
-            NomP[Ncomp] = NomProd.value;
-            x[Ncomp] = clientProduit.value;
-            Typeprod[Ncomp] = listDrop.value;
-            TypeTask[Ncomp] = TypeTrait.value;
-            console.log("Nom : " + NomP[Ncomp]);
-            console.log("Type prod : " + Typeprod[Ncomp]);
-            console.log(x[Ncomp]);
-            console.log("type task : " + TypeTask[Ncomp]);
-            console.log("Date : " + DateProd.value);
-            Ncomp = Ncomp + 1;
+            //codeProduit[comp] = Ncomp
+            //NomP[Ncomp] = NomProd.value;
+            //x[Ncomp] = clientProduit.value;
+            //Typeprod[Ncomp] = listDrop.value;
+            //TypeTask[Ncomp] = TypeTrait.value;
+            //console.log("Nom : " + NomP[Ncomp]);
+            //console.log("Type prod : " + Typeprod[Ncomp]);
+            //console.log(x[Ncomp]);
+            //console.log("type task : " + TypeTask[Ncomp]);
+            //console.log("Date : " + DateProd.value);
+            //Ncomp = Ncomp + 1;
 
             //To stop submit from refreshing the page
             e.preventDefault();
@@ -252,7 +271,7 @@ function load() {
     const dateList = document.createElement('li');
     const lol = document.createElement('li');
 
-    cherBtn.innerText = "Valide";
+    cherBtn.innerText = "Valider";
     infoClientRech.innerText = "Les infos de client : ";
     recherche.placeholder = "Saisir le nom de client rechercher ";
     infoClientRech.classList = "RechInfo";
