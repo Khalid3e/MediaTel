@@ -1,0 +1,11 @@
+[Wed Jul 28 19:47:29.586169 2021] [authz_core:error] [pid 11328:tid 1844] [client ::1:58572] AH01630: client denied by server configuration: D:/Projects/Workshop/MediaTel2/
+[Wed Jul 28 19:47:40.906133 2021] [php:error] [pid 11328:tid 1844] [client 127.0.0.1:58582] script 'D:/xampp/phpMyAdmin/export.php' not found or unable to stat
+[Wed Jul 28 19:51:29.638027 2021] [authz_core:error] [pid 5384:tid 1872] [client ::1:58749] AH01630: client denied by server configuration: D:/Projects/Workshop/MediaTel2/
+[Wed Jul 28 19:51:30.941146 2021] [authz_core:error] [pid 5384:tid 1872] [client ::1:58749] AH01630: client denied by server configuration: D:/Projects/Workshop/MediaTel2/favicon.ico, referer: http://mediatel2/
+[Wed Jul 28 19:53:10.476291 2021] [authz_core:error] [pid 5384:tid 1872] [client ::1:58848] AH01630: client denied by server configuration: D:/Projects/Workshop/MediaTel2/
+[Wed Jul 28 19:53:31.345521 2021] [authz_core:error] [pid 11856:tid 1844] [client ::1:58851] AH01630: client denied by server configuration: D:/Projects/Workshop/MediaTel2/
+[Wed Jul 28 19:53:34.769756 2021] [authz_core:error] [pid 11856:tid 1844] [client ::1:58851] AH01630: client denied by server configuration: D:/Projects/Workshop/MediaTel2/
+[Wed Jul 28 19:54:22.821762 2021] [authz_core:error] [pid 11856:tid 1844] [client ::1:58878] AH01630: client denied by server configuration: D:/Projects/Workshop/MediaTel2/
+[Wed Jul 28 19:55:27.638676 2021] [authz_core:error] [pid 11880:tid 1844] [client ::1:58882] AH01630: client denied by server configuration: D:/Projects/Workshop/MediaTel2/
+[Wed Jul 28 19:55:38.612038 2021] [authz_core:error] [pid 11880:tid 1844] [client ::1:58893] AH01630: client denied by server configuration: D:/Projects/Workshop/MediaTel2/
+[Wed Jul 28 19:55:58.513330 2021] [authz_core:error] [pid 11880:tid 1844] [client ::1:58895] AH01630: client denied by server configuration: D:/Projects/Workshop/MediaTel2/

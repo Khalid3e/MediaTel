@@ -12,6 +12,7 @@ const Mmenu = document.querySelector(".First-Menu");
 const Menuclient = document.querySelector(".Second-Menu");
 const Menuproduit = document.querySelector(".Third-Menu");
 const Edition = document.querySelector(".Fourth-Menu");
+const tb = document.querySelector(".tb");
 
 //Client datat :
 //const codeClient = [], NomClien = [], TelClient = [], DateEnreg = [];
@@ -281,6 +282,7 @@ function load() {
     addEventListener('click', (e) => {
         const target = e.target;
         if (target === cherBtn) {
+            // I don't understand "check" and the if built on it
             if (check < 1) {
                 for( let i = 1; i < comp; i++) {
                     let result = NomClien[i].localeCompare(recherche.value);
@@ -446,7 +448,42 @@ function loadproducts()
   success: function (response) {
    // We get the element having id of display_info and put the response inside it
    $( '#info-client' ).html(response);
- //  $('#datatable').DataTable();
+
+   //Expand details table-row when clicking on the table-row before
+   $(function() {
+       //Hide details tr > p
+    $("td[colspan=3]").find("p").hide();
+
+    // Create handler of clicking on table 
+    $("table").click(function(event) {
+         event.stopPropagation();
+
+         var $target = $(event.target);
+         var $id ;
+         
+        if (typeof $target.parents('tr').attr('id') !== 'undefined' && $target.parents('tr').attr('id') !== false) {
+            $id = $target.parents('tr').attr('id').substr(1);
+        } else {
+            $id =$target.parents('tr').prev('tr').attr('id').substr(1);
+        }
+
+
+        $("#d" + $id).slideToggle("slow");
+
+        // Open and close the appropriate thing
+        
+        if ( $("#d" + $id).parents('tr').attr('class') == 'active') {
+            $("#d" + $id).parents('tr').attr('class', '');
+            $("#l" + $id).attr('class', '');
+
+        } else {
+            $("#d" + $id).parents('tr').attr('class', 'active');
+            $("#l" + $id).attr('class', 'active');
+        }    
+         
+            
+        });
+    });
   }
   });
  

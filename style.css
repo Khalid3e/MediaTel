@@ -1,11 +1,28 @@
 * {
     padding: 0;
     margin: 0;
+    scrollbar-color: var(--main) var(--secondary1);
+    scrollbar-width: thin;
 }
 *,
 *::before,
 *::after {
     box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background:  var(--secondary1); 
+}
+   
+::-webkit-scrollbar-thumb {
+    background: var(--main); 
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: #C97616; 
 }
 
 :root {
@@ -67,6 +84,8 @@ button {
     border-radius: 8px;
     width: 80%;
     box-shadow: 6px 6px 6px 1px  var(--shadow);
+    overflow: auto;
+    max-height: 60vh;
 }
 
 .client-container {
@@ -218,8 +237,5 @@ thead > tr > td{
 tbody > tr > td{
     padding: 5px;
 }
-tbody > tr:nth-child(even) {background-color:  var(--secondary2);}
 
-tbody > tr:nth-child(odd) {background-color:  var(--secondary1);}
-
-tbody > tr:hover {background-color:  var(--main); color:  var(--secondary1); }
+/*tbody > tr:hover {background-color:  var(--main); color:  var(--secondary1); }*/

@@ -15,7 +15,7 @@ $query = mysqli_query($e_, $sql_req);
 
 
 echo '<div class="info" style="width: 100%; margin: 3px; padding: 3px;">';
-echo '<table width="100%">';
+echo '<table width="100%" class="tb">';
 echo '<thead>';
 
 echo '<tr>';
@@ -27,9 +27,11 @@ echo '</thead>';
 
 echo '<tbody>';
 
+$i = 1;
+
 while($row = mysqli_fetch_assoc($query))
 {
-    echo '<tr>';
+    echo '<tr id="l'. $i .'">';
 
     $client = $row['client_prod'];
     echo "<td>".$client."</td>";
@@ -38,12 +40,17 @@ while($row = mysqli_fetch_assoc($query))
     $type = $row['type_prod'];
     echo "<td>".$type."</td>";
     echo '</tr>';
-
+    echo '<tr>';
+    $trait = $row['trait_prod'];
+    echo '<td colspan="3"><p id="d'. $i .'">'.$trait."</p></td>";
+    echo '</tr>';
+    $i = $i + 1;
 }
 echo '</tbody>';
 
 echo '</table>';
 echo "</div>";
+echo "<script>console.log('Hello 1');</script>";
 
 /*
 echo '<div class="info">';
